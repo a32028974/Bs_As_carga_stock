@@ -1,6 +1,4 @@
-/* ====== CONFIG ====== */
-// Pegá 1 sola vez tu URL /exec en la caja (o hardcodeala acá).
-const API_FALLBACK = 'https://script.google.com/macros/s/AKfycbxVj1eryyemrFtnRkery0nm5cpWgUd0WxEuCsGsAg2V7ra8VYg3-_dh-3ljXb-bVVeK1g/exec'; // ej: 'https://script.google.com/macros/s/AKfycb.../exec'
+const API_FALLBACK = 'https://script.google.com/macros/s/AKfycbwkMzXIkxtkjVQSoDkKPG-dJHx-ERcCCORnWTumKGLZWJOsr5G2cWvTkIYKJcSwNG4foQ/exec';
 const API = (localStorage.getItem('OC_API') || API_FALLBACK).trim();
 
 /* ====== HELPERS ====== */
