@@ -1,6 +1,3 @@
-// === Config ===
-const URL = 'https://script.google.com/macros/s/AKfycbx10yyMaolnXqNuVGd8Npspx7BNLDtc1HyOVcievy7Z3m9yMGwFsJjjOKqiqgy8ZVrHsw/exec'; // mismo que tenías
-
 // Estado: carrito acumulado de artículos por ID de fila (sheet)
 const carrito = new Map();  // key = filaIndex, value = { n_ant, marca, modelo, color, armazon, calibre, fecha, vendedor, checked }
 let ultimoIdAgregado = null; // para enfocar input de vendedor
