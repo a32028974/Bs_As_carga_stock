@@ -1,4 +1,4 @@
-const API_FALLBACK = 'https://script.google.com/macros/s/AKfycbwkMzXIkxtkjVQSoDkKPG-dJHx-ERcCCORnWTumKGLZWJOsr5G2cWvTkIYKJcSwNG4foQ/exec';
+const API_FALLBACK = 'https://script.google.com/macros/s/AKfycbxWXdkO1-V21lV-iNCJkYX_9LE1-uyVZ7cTtHl054lPn2qdIOCKIncxwMjjDd1u6D5pNg/exec';
 const API = (localStorage.getItem('OC_API') || API_FALLBACK).trim();
 
 /* ====== HELPERS ====== */
