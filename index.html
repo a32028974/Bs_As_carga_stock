@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1340, initial-scale=1" />
+  <title>Cargar anteojo • Óptica Bs As</title>
+
+  <link rel="icon" type="image/png" href="logo_Bs_As.png" />
+  <link rel="stylesheet" href="css/style.css?v=2" />
+</head>
+
+<body>
+
+  <header style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+    <img src="logo_Bs_As.png" style="height:48px;">
+    <h1 style="margin:0;">Cargar nuevo anteojo</h1>
+  </header>
+
+  <div id="mensaje-flotante" style="
+      position: sticky;
+      top: 0;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-weight: 600;">
+      Listo para cargar 👓
+  </div>
+
+  <form id="form-anteojo" onsubmit="event.preventDefault(); guardar();" style="max-width:760px;">
+
+    <label>N° anteojo</label>
+    <input id="n_anteojo" type="text" autocomplete="off">
+
+    <label>Fábrica</label>
+    <input id="fabrica" type="text" autocomplete="off">
+
+    <label>Marca</label>
+    <input id="marca" type="text" autocomplete="off">
+
+    <label>Modelo</label>
+    <input id="modelo" type="text" autocomplete="off">
+
+    <label>Código color</label>
+    <input id="codigo_color" type="text" autocomplete="off">
+
+    <div class="row-2">
+      <div>
+        <label>Color armazón</label>
+        <input id="color_armazon" type="text" autocomplete="off">
+      </div>
+      <div>
+        <label>Calibre</label>
+        <input id="calibre" type="text" autocomplete="off">
+      </div>
+    </div>
+
+    <label>Color cristal</label>
+    <input id="color_cristal" type="text" autocomplete="off">
+
+    <div class="row-2">
+      <div>
+        <label>Familia</label>
+        <select id="familia">
+          <option value="">-- Seleccionar --</option>
+          <option value="SOL">SOL</option>
+          <option value="RECETA">RECETA</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Costo</label>
+        <input id="costo" type="number" step="0.01">
+      </div>
+    </div>
+
+    <label>
+      <input type="checkbox" id="tengo_precio">
+      Ingresé precio público (no tengo costo)
+    </label>
+
+    <label>Precio público (calculado)</label>
+    <input id="precio" type="number" step="0.01" readonly>
+
+    <label>Código de barras</label>
+    <input id="codigo_barras" type="text" autocomplete="off">
+
+    <label>Observaciones</label>
+    <textarea id="observaciones" placeholder="(Shift+Enter para salto de línea)"></textarea>
+
+    <button id="btn-guardar" type="submit">Guardar</button>
+  </form>
+
+  <footer style="margin-top:50px; text-align:center; opacity:0.8;">
+    <small>Desarrollado por <strong>Juan Ignacio Solis</strong></small>
+  </footer>
+
+  <script>
+    // URL del Apps Script de Óptica Bs As
+    localStorage.setItem('OC_API',
+      'https://script.google.com/macros/s/AKfycbxtrNeXKm41RjLD8eVByCHsiXd3cqH6SLkE7Cpoop8KYKq6Ly-WPJtzM8-SEUMptlsbrw/exec'
+    );
+  </script>
+
+  <script src="js/script.js?v=2"></script>
+</body>
+</html>
