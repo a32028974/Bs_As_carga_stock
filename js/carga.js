@@ -102,12 +102,14 @@ async function guardar(){
 
   byId('btn-guardar').disabled = true; msg('Guardando…');
 
-  try {
+    try {
     const res = await fetch(`${API}?action=guardar`, {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      // Importante: usar text/plain para evitar preflight CORS
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
     });
+
     const js = await res.json();
 
     if (js.ok) {
@@ -136,6 +138,7 @@ async function guardar(){
     byId('btn-guardar').disabled = false;
   }
 }
+
 
 /* ====== INIT ====== */
 function init() {
