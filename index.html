@@ -2,107 +2,232 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1340, initial-scale=1" />
-  <title>Cargar anteojo • Óptica Bs As</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Cargar nuevo anteojo • Óptica Bs As</title>
 
   <link rel="icon" type="image/png" href="logo_Bs_As.png" />
-  <link rel="stylesheet" href="css/style.css?v=2" />
+
+  <!-- Estilos simples pero prolijos, basados en tu carga.html original -->
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --fg: #111;
+      --muted: #666;
+      --btn: #1d4ed8;
+      --btnH: #1e40af;
+      --border: #ddd;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+
+    body{
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      margin: 0;
+      padding: 18px;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    header{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    header img{ height: 44px; }
+    header h1{ margin: 0; font-size: 1.6rem; }
+
+    #mensaje-flotante{
+      position: sticky;
+      top: 0;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .card{
+      background: var(--card);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 16px 18px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    label{
+      display: block;
+      font-weight: 600;
+      margin-top: 10px;
+      font-size: 0.92rem;
+    }
+    input, select, textarea, button{
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    textarea{
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .fila-2{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 12px;
+    }
+
+    button{
+      background: var(--btn);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-top: 14px;
+      font-weight: 600;
+    }
+    button:hover{
+      background: var(--btnH);
+    }
+    button:disabled{
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .hint{
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .check-inline{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .check-inline input{
+      width: auto;
+      margin-top: 0;
+    }
+
+    footer{
+      margin-top: 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
 
 <body>
 
-  <header style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
-    <img src="logo_Bs_As.png" style="height:48px;">
-    <h1 style="margin:0;">Cargar nuevo anteojo</h1>
+  <header>
+    <img src="logo_Bs_As.png" alt="Óptica Bs As">
+    <h1>Cargar nuevo anteojo</h1>
   </header>
 
-  <div id="mensaje-flotante" style="
-      position: sticky;
-      top: 0;
-      padding: 10px 12px;
-      margin-bottom: 10px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-weight: 600;">
-      Listo para cargar 👓
+  <div id="mensaje-flotante">
+    Listo para cargar 👓
   </div>
 
-  <form id="form-anteojo" onsubmit="event.preventDefault(); guardar();" style="max-width:760px;">
+  <main class="card">
+    <form id="form-anteojo" onsubmit="event.preventDefault(); guardar();">
 
-    <label>N° anteojo</label>
-    <input id="n_anteojo" type="text" autocomplete="off">
-
-    <label>Fábrica</label>
-    <input id="fabrica" type="text" autocomplete="off">
-
-    <label>Marca</label>
-    <input id="marca" type="text" autocomplete="off">
-
-    <label>Modelo</label>
-    <input id="modelo" type="text" autocomplete="off">
-
-    <label>Código color</label>
-    <input id="codigo_color" type="text" autocomplete="off">
-
-    <div class="row-2">
-      <div>
-        <label>Color armazón</label>
-        <input id="color_armazon" type="text" autocomplete="off">
-      </div>
-      <div>
-        <label>Calibre</label>
-        <input id="calibre" type="text" autocomplete="off">
-      </div>
-    </div>
-
-    <label>Color cristal</label>
-    <input id="color_cristal" type="text" autocomplete="off">
-
-    <div class="row-2">
-      <div>
-        <label>Familia</label>
-        <select id="familia">
-          <option value="">-- Seleccionar --</option>
-          <option value="SOL">SOL</option>
-          <option value="RECETA">RECETA</option>
-        </select>
+      <div class="fila-2">
+        <div>
+          <label for="n_anteojo">N° anteojo</label>
+          <input id="n_anteojo" name="n_anteojo" type="text" autocomplete="off" readonly />
+          <span class="hint">Se completa solo desde la planilla.</span>
+        </div>
+        <div>
+          <label for="fabrica">Fábrica</label>
+          <input id="fabrica" name="fabrica" type="text" autocomplete="off" />
+        </div>
       </div>
 
-      <div>
-        <label>Costo</label>
-        <input id="costo" type="number" step="0.01">
+      <div class="fila-2">
+        <div>
+          <label for="marca">Marca</label>
+          <input id="marca" name="marca" type="text" autocomplete="off" />
+        </div>
+        <div>
+          <label for="modelo">Modelo</label>
+          <input id="modelo" name="modelo" type="text" autocomplete="off" />
+        </div>
       </div>
-    </div>
 
-    <label>
-      <input type="checkbox" id="tengo_precio">
-      Ingresé precio público (no tengo costo)
-    </label>
+      <label for="codigo_color">Código color</label>
+      <input id="codigo_color" name="codigo_color" type="text" autocomplete="off" />
 
-    <label>Precio público (calculado)</label>
-    <input id="precio" type="number" step="0.01" readonly>
+      <div class="fila-2">
+        <div>
+          <label for="color_armazon">Color armazón</label>
+          <input id="color_armazon" name="color_armazon" type="text" autocomplete="off" />
+        </div>
+        <div>
+          <label for="calibre">Calibre</label>
+          <input id="calibre" name="calibre" type="text" autocomplete="off" />
+        </div>
+      </div>
 
-    <label>Código de barras</label>
-    <input id="codigo_barras" type="text" autocomplete="off">
+      <label for="color_cristal">Color cristal</label>
+      <input id="color_cristal" name="color_cristal" type="text" autocomplete="off" />
 
-    <label>Observaciones</label>
-    <textarea id="observaciones" placeholder="(Shift+Enter para salto de línea)"></textarea>
+      <div class="fila-2">
+        <div>
+          <label for="familia">Familia</label>
+          <select id="familia" name="familia">
+            <option value="">-- Seleccionar --</option>
+            <option value="SOL">SOL</option>
+            <option value="RECETA">RECETA</option>
+          </select>
+          <div class="hint">Usamos SOL / RECETA para calcular el precio.</div>
+        </div>
+        <div>
+          <label for="costo">Costo</label>
+          <input id="costo" name="costo" type="number" step="0.01" inputmode="decimal" />
+        </div>
+      </div>
 
-    <button id="btn-guardar" type="submit">Guardar</button>
-  </form>
+      <label class="check-inline">
+        <input type="checkbox" id="tengo_precio" />
+        Ingresé precio público (no tengo costo)
+      </label>
 
-  <footer style="margin-top:50px; text-align:center; opacity:0.8;">
+      <label for="precio">Precio público (calculado / ingresado)</label>
+      <input id="precio" name="precio" type="number" step="0.01" inputmode="decimal" />
+
+      <label for="codigo_barras">Código de barras</label>
+      <input id="codigo_barras" name="codigo_barras" type="text" autocomplete="off" />
+
+      <label for="observaciones">Observaciones</label>
+      <textarea id="observaciones" name="observaciones" placeholder="(Shift+Enter para salto de línea)"></textarea>
+
+      <button id="btn-guardar" type="submit">Guardar</button>
+      <div class="hint"></div>
+    </form>
+  </main>
+
+  <footer>
     <small>Desarrollado por <strong>Juan Ignacio Solis</strong></small>
   </footer>
 
+  <!-- Guardamos la URL nueva de Óptica Bs As para que la use carga.js -->
   <script>
-    // URL del Apps Script de Óptica Bs As
-    localStorage.setItem('OC_API',
+    localStorage.setItem(
+      'OC_API',
       'https://script.google.com/macros/s/AKfycbxtrNeXKm41RjLD8eVByCHsiXd3cqH6SLkE7Cpoop8KYKq6Ly-WPJtzM8-SEUMptlsbrw/exec'
     );
   </script>
 
-  <script src="js/script.js?v=2"></script>
+  <!-- IMPORTANTE: usar el JS de CARGA, no el de ventas -->
+  <script src="js/carga.js?v=1"></script>
 </body>
 </html>
